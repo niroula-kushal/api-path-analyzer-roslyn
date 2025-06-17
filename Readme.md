@@ -26,6 +26,25 @@ ApiPathAnalyzer is a .NET project aimed at analyzing and aiding in the inspectio
 4. **Use the Analyzer in Your IDE**  
    - Review any warnings or suggestions provided, and make the necessary changes to ensure a consistent API structure.
 
+## Further Details
+
+- **Usage Example**: You can see an example of this analyzer in action in the `Example.cs` file within the Samples directory. The Route attribute should be showing build error. 
+- **Code Implementation**: Most of the core logic resides in `EndpointAnalyzer.cs`, which shows how routes are parsed and validated. 
+- **Changing the Logic**: If you need to customize rules (for instance, disallowing periods (`.`) in the URL), you can update the logic in `EndpointAnalyzer.cs`. A simple snippet demonstrating a check for invalid characters might look like this:
+
+  ```csharp
+  // Example snippet in EndpointAnalyzer.cs:
+   if (!routeText.StartsWith("/api") || routeText.Contains("_")
+       || routeText.Contains(".")
+       )
+   {
+        var diagnostic = Diagnostic.Create(Rule, literalExpr.GetLocation());
+        context.ReportDiagnostic(diagnostic);
+   }
+  ```
+
+  By returning true when a period is found, you can handle this as a warning or error depending on your analyzer’s configuration.
+
 ## Note
 This project is just a showcase of what can be done, and the logic can be changed in **EndpointAnalyzer.cs** (or your custom file) to suit your specific requirements or scenarios.
 
