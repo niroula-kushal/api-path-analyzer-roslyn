@@ -14,6 +14,8 @@ public class Examples
     }
     
     [Route("/xapi/spaceships-hello")]
+    #pragma warning disable EP0001
+    [Route("/xapi/spaceships-hello")]
     public void ToStars()
     {
         

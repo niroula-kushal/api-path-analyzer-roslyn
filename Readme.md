@@ -45,6 +45,10 @@ ApiPathAnalyzer is a .NET project aimed at analyzing and aiding in the inspectio
 
   By returning true when a period is found, you can handle this as a warning or error depending on your analyzer’s configuration.
 
+## Disabling the Rule
+
+If you need to suppress a particular warning (for instance, the rule with identifier `Ep0001`), you can temporarily disable it by using the C# `#pragma` directives:
+
 ## Note
 This project is just a showcase of what can be done, and the logic can be changed in **EndpointAnalyzer.cs** (or your custom file) to suit your specific requirements or scenarios.
 
